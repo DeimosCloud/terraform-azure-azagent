@@ -18,7 +18,7 @@ resource "random_id" "this" {
 }
 
 locals {
-  image_name = "${var.acr_registry}/dockeragent:latest"
+  image_name = "${var.registry_url}/dockeragent:latest"
   agent_name = "${var.prefix}-${random_id.this.hex}"
 }
 
@@ -49,9 +49,9 @@ resource "azurerm_container_group" "cg" {
 
 
   image_registry_credential {
-    username = var.sp_id
-    password = var.sp_secret
-    server   = var.acr_registry
+    username = var.registry_username
+    password = var.registry_secret
+    server   = var.registry_url
   }
 
   container {

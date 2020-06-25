@@ -15,9 +15,10 @@ variable "tags" {
   default     = null
 }
 
-variable "acr_registry" {
-  description = "URL of ACR Registry to deploy Container to"
+variable "registry_url" {
+  description = "URL of Registry to deploy Container to"
   type        = string
+  default     = null
 }
 
 variable "azp_token" {
@@ -48,12 +49,14 @@ variable "memory" {
   type        = string
 }
 
-variable "sp_id" {
-  description = "The ID of the service principal to be assigned as container identities and also used for image pull"
+variable "registry_username" {
+  description = "The username used to authenticate to registry. Could be service principal ID"
   type        = string
+  default     = null
 }
 
-variable "sp_secret" {
-  description = "Password for Service Principal used for container authentication"
+variable "registry_secret" {
+  description = "Password for user to be used for container authentication"
   type        = string
+  default     = null
 }
