@@ -1,9 +1,8 @@
-# Azure Agent
+# Terraform Azure AzAgent Module
 
 Self Hosted Agent for running Pipelines on Azure## Requirements
 
 ## Usage
-## Basic Usage
 
 ```hcl
 module "self_hosted_agent" {
@@ -19,6 +18,29 @@ module "self_hosted_agent" {
 }
 ```
 The User whose token is to be used must have Agent Pool Manage and Read Permissions (https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops#confirm-the-user-has-permission)
+
+## Doc generation
+
+Code formatting and documentation for variables and outputs is generated using [pre-commit-terraform hooks](https://github.com/antonbabenko/pre-commit-terraform) which uses [terraform-docs](https://github.com/segmentio/terraform-docs).
+
+Follow [these instructions](https://github.com/antonbabenko/pre-commit-terraform#how-to-install) to install pre-commit locally.
+
+And install `terraform-docs` with
+```bash
+go get github.com/segmentio/terraform-docs
+```
+or
+```bash
+brew install terraform-docs.
+```
+
+## Contributing
+
+Report issues/questions/feature requests on in the issues section.
+
+Full contributing guidelines are covered [here](CONTRIBUTING.md).
+
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Requirements
 
@@ -53,3 +75,5 @@ The User whose token is to be used must have Agent Pool Manage and Read Permissi
 |------|-------------|
 | agent\_container\_group\_id | The ID of the container Group the Agent was deployed in |
 | agent\_pool\_name | Name of Pool agent was deployed to |
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
