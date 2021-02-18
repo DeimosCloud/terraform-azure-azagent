@@ -1,14 +1,3 @@
-terraform {
-  required_version = ">= 0.12"
-
-  required_providers {
-    azurerm     = ">= 2.0"
-    azuredevops = ">= 0.0.1"
-    local       = ">= 1.2"
-    random      = ">= 2.1"
-  }
-}
-
 data azurerm_resource_group "cg" {
   name = var.resource_group_name
 }
@@ -18,12 +7,13 @@ resource "random_id" "this" {
 }
 
 locals {
-  image_name = "${var.registry_url}/dockeragent:latest"
+  image_name = "${var.registry_url}/${var.image_name}:${var.image_tag}"
   agent_name = "${var.prefix}-${random_id.this.hex}"
 }
 
 
 resource "null_resource" "deploy_container" {
+  count = var.create_image ? 1 : 0
   provisioner "local-exec" {
     command = <<EOT
       docker build -t ${local.image_name} "${path.module}/dockeragent/"

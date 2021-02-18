@@ -2,3 +2,5 @@
 *.tfstate*
 .terraform/
 terraform.tfstate.d/
+
+providers_test_az.tf

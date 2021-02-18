@@ -41,17 +41,22 @@ Report issues/questions/feature requests on in the issues section.
 Full contributing guidelines are covered [here](CONTRIBUTING.md).
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12 |
+| terraform | >= 0.13 |
 | azuredevops | >= 0.0.1 |
 | azurerm | >= 2.0 |
-| local | >= 1.2 |
-| random | >= 2.1 |
 
+## Providers
+
+| Name | Version |
+|------|---------|
+| azuredevops | >= 0.0.1 |
+| azurerm | >= 2.0 |
+| null | n/a |
+| random | n/a |
 
 ## Inputs
 
@@ -61,6 +66,9 @@ Full contributing guidelines are covered [here](CONTRIBUTING.md).
 | azp\_token | Azure DevOps Token | `string` | n/a | yes |
 | azp\_url | The URL of the Azure DevOps or Azure DevOps Server instance | `string` | n/a | yes |
 | cpu | The required number of CPU cores of the containers. Changing this forces a new resource to be created. | `string` | `"0.5"` | no |
+| create\_image | Whether to create the image and push to registry. If image already exists no need to push | `bool` | `false` | no |
+| image\_name | Name of docker image to create or pull from for the agent | `string` | `"dockeragent"` | no |
+| image\_tag | Image Tag | `string` | `"latest"` | no |
 | memory | The required memory of the containers in GB. Changing this forces a new resource to be created. | `string` | `"1.5"` | no |
 | prefix | The prefix for all created resources | `string` | `"linux-agent"` | no |
 | registry\_secret | Password for user to be used for container authentication | `string` | `null` | no |

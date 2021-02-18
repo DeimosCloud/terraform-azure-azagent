@@ -60,3 +60,18 @@ variable "registry_secret" {
   type        = string
   default     = null
 }
+
+variable "image_name" {
+  default     = "dockeragent"
+  description = "Name of docker image to create or pull from for the agent"
+}
+
+variable "image_tag" {
+  default     = "latest"
+  description = "Image Tag"
+}
+
+variable "create_image" {
+  default     = false
+  description = "Whether to create the image and push to registry. If image already exists no need to push"
+}
