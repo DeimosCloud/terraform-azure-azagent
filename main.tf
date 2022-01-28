@@ -1,4 +1,4 @@
-data azurerm_resource_group "cg" {
+data "azurerm_resource_group" "cg" {
   name = var.resource_group_name
 }
 
